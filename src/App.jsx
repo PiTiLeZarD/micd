@@ -19,7 +19,10 @@ const App = () => {
             )}
         >
             <Suspense fallback={<p>Loading...</p>}>
-                <p>This is a 16x16x32 chunk, aired up a little, no optimisation done...</p>
+                <p>
+                    This is a 16x16x128 chunk, aired up a little, bricks that touch all other bricks are removed from
+                    the chunk
+                </p>
                 <Canvas
                     style={{ height: "500px" }}
                     onCreated={({ gl }) => {
@@ -30,7 +33,7 @@ const App = () => {
                     <ambientLight />
                     <pointLight position={[20, 20, 20]} />
                     <TexturesContextProvider>
-                        <Chunk position={[0, 0, 0]} data={generateChunk(16, 16, 32)} />
+                        <Chunk position={[0, 0]} data={generateChunk(16, 16, 128)} />
                     </TexturesContextProvider>
                 </Canvas>
             </Suspense>

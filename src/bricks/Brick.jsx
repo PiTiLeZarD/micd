@@ -2,10 +2,6 @@ import { useRef, useContext } from "react";
 
 import { CubeTextures, TexturesContext } from "../textures";
 
-/**
- * Texture order right, left, top, bottom, front, back
- */
-
 const Brick = ({ config, ...otherProps }) => {
     const ref = useRef();
     const textures = useContext(TexturesContext);

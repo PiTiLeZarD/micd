@@ -12,7 +12,7 @@ const Brick = ({ config, ...otherProps }) => {
 
     return (
         <mesh {...otherProps} ref={ref} scale={1}>
-            <boxGeometry args={[4, 4, 4]} />
+            <boxGeometry args={[1, 1, 1]} />
 
             {config.textures && <CubeTextures {...config.textures} />}
             {config.texture && <meshBasicMaterial attach="material" map={textures[config.texture]} />}

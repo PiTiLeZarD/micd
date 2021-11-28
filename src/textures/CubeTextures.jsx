@@ -3,7 +3,6 @@ import { TexturesContext } from "./Context";
 
 export const CubeTextures = ({ right, left, top, bottom, front, back }) => {
     const textures = useContext(TexturesContext);
-    console.log(textures);
     return (
         <Fragment>
             <meshBasicMaterial attachArray="material" map={textures[right]} />

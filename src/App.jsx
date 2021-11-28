@@ -1,27 +1,42 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import ErrorBoundary from "./ErrorBoundary";
-import GrassBrick from "./bricks/grass/Brick";
 import CameraControls from "./CameraControls";
 
-const App = () => (
-    <ErrorBoundary
-        renderError={(error) => (
-            <pre>
-                <span dangerouslySetInnerHTML={{ __html: JSON.stringify(error, null, 2) }} />
-            </pre>
-        )}
-    >
-        <Suspense fallback={<p>Loading...</p>}>
-            <Canvas style={{ height: "500px" }}>
-                <CameraControls />
-                <ambientLight />
-                <pointLight position={[10, 10, 10]} />
-                <GrassBrick position={[0, 0, 0]} rotation={[0.5, 0.5, 0]} />
-            </Canvas>
-        </Suspense>
-    </ErrorBoundary>
-);
+import GrassBrick from "./bricks/grass/Brick";
+import DirtBrick from "./bricks/dirt/Brick";
+
+const App = () => {
+    const [brick, setBrick] = useState("grass");
+
+    return (
+        <ErrorBoundary
+            renderError={(error) => (
+                <pre>
+                    <span dangerouslySetInnerHTML={{ __html: JSON.stringify(error, null, 2) }} />
+                </pre>
+            )}
+        >
+            <Suspense fallback={<p>Loading...</p>}>
+                <label>
+                    Type of brick:{" "}
+                    <select onChange={(ev) => setBrick(ev.target.value)}>
+                        <option value="grass">Grass</option>
+                        <option value="dirt">Dirt</option>
+                    </select>
+                </label>
+
+                <Canvas style={{ height: "500px" }}>
+                    <CameraControls />
+                    <ambientLight />
+                    <pointLight position={[20, 20, 20]} />
+                    {brick == "grass" && <GrassBrick position={[0, 0, 0]} />}
+                    {brick == "dirt" && <DirtBrick position={[0, 0, 0]} />}
+                </Canvas>
+            </Suspense>
+        </ErrorBoundary>
+    );
+};
 
 export default App;

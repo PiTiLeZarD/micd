@@ -15,7 +15,7 @@ const GrassBrick = (props) => {
     const bottomTexture = useLoader(TextureLoader, bottomImg);
 
     return (
-        <mesh {...props} ref={ref} scale={1} rotation={[3.5, 2, 0]}>
+        <mesh {...props} ref={ref} scale={1}>
             <boxGeometry args={[4, 4, 4]} />
 
             <meshBasicMaterial attachArray="material" map={topTexture} />

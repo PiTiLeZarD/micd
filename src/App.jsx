@@ -20,8 +20,8 @@ const App = () => {
         >
             <Suspense fallback={<p>Loading...</p>}>
                 <p>
-                    This is a 16x16x128 chunk, aired up a little, bricks that touch all other bricks are removed from
-                    the chunk
+                    This is 4 chunks 16x16x64, aired up a little, bricks that touch all other bricks are removed from
+                    the chunk, chunks aren't aware of other chunks (we're reaching the limit of memory/cpu there)
                 </p>
                 <Canvas
                     style={{ height: "500px" }}
@@ -33,7 +33,10 @@ const App = () => {
                     <ambientLight />
                     <pointLight position={[20, 20, 20]} />
                     <TexturesContextProvider>
-                        <Chunk position={[0, 0]} data={generateChunk(16, 16, 128)} />
+                        <Chunk position={[0, 0]} data={generateChunk(16, 16, 64)} />
+                        <Chunk position={[1, 0]} data={generateChunk(16, 16, 64)} />
+                        <Chunk position={[1, 1]} data={generateChunk(16, 16, 64)} />
+                        <Chunk position={[1, 0]} data={generateChunk(16, 16, 64)} />
                     </TexturesContextProvider>
                 </Canvas>
             </Suspense>

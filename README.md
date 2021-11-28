@@ -20,13 +20,11 @@ I'm taking it one step at a time. So for now:
 
 ### immediate improvements
 
--   textures really don't need to be that big, 8 bits png would do the trick and probably would lighten everything up
+-   chunks should be aware of other chunks to determine which brick gets rendered
+-   generate a terrain (couple of rules to generate chunks)
 
 ### long term milestones
 
--   display a couple of bricks together
 -   camera controlled by keyboard
--   generate a terrain
--   concept of chunks?
 -   physics
 -   crafting?

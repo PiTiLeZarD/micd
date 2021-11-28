@@ -20,4 +20,28 @@ export const bricks = {
     coal_ore: {
         texture: "coal_ore",
     },
+    gold_ore: {
+        texture: "gold_ore",
+    },
+    iron_ore: {
+        texture: "iron_ore",
+    },
+    diamond_ore: {
+        texture: "diamond_ore",
+    },
+    granite: {
+        texture: "granite",
+    },
+    stone: {
+        texture: "stone",
+    },
+    andesite: {
+        texture: "andesite",
+    },
+    diorite: {
+        texture: "diorite",
+    },
+    deepslate: {
+        texture: "deepslate",
+    },
 };

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 import topImg from "./top.png";
@@ -13,11 +13,6 @@ const GrassBrick = (props) => {
     const topTexture = useLoader(TextureLoader, topImg);
     const sideTexture = useLoader(TextureLoader, sideImg);
     const bottomTexture = useLoader(TextureLoader, bottomImg);
-
-    // useFrame((state, delta) => {
-    //     ref.current.rotation.x += 0.02;
-    //     ref.current.rotation.y += 0.01;
-    // });
 
     return (
         <mesh {...props} ref={ref} scale={1} rotation={[3.5, 2, 0]}>

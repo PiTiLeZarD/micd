@@ -1,5 +1,6 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
+import { NoToneMapping } from "three";
 
 import ErrorBoundary from "./ErrorBoundary";
 import CameraControls from "./CameraControls";
@@ -29,7 +30,12 @@ const App = () => {
                     </select>
                 </label>
 
-                <Canvas style={{ height: "500px" }}>
+                <Canvas
+                    style={{ height: "500px" }}
+                    onCreated={({ gl }) => {
+                        gl.toneMapping = NoToneMapping;
+                    }}
+                >
                     <CameraControls />
                     <ambientLight />
                     <pointLight position={[20, 20, 20]} />

@@ -32,6 +32,9 @@ export const bricks = {
     granite: {
         texture: "granite",
     },
+    bedrock: {
+        texture: "bedrock",
+    },
     stone: {
         texture: "stone",
     },

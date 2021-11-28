@@ -9,10 +9,11 @@ export const rotateTexture = (texture, angle) => {
     return rotatedTexture;
 };
 
-const randomBrick = () => {
-    const r = parseInt(Math.random() * (Object.keys(bricks).length + 4));
-    if (r >= Object.keys(bricks).length) return null;
-    return r;
+const randomBrick = (x, y, z, chunkHeight) => {
+    if (z == 0) return Object.keys(bricks).indexOf("bedrock");
+    if (z == chunkHeight / 2) return Object.keys(bricks).indexOf("grass");
+    if (z > chunkHeight / 2) return null;
+    return Object.keys(bricks).indexOf("stone");
 };
 
 const surroundingBricks = (chunk, x, y, z) => {
@@ -40,9 +41,13 @@ const optimise = (chunk) =>
         )
     );
 
-export const generateChunk = (x, y, z) => {
-    const chunk = new Array(z)
+export const generateChunk = (cx, cy, chunkSize, chunkHeight) => {
+    const chunk = new Array(chunkHeight)
         .fill(null)
-        .map(() => new Array(y).fill(null).map(() => new Array(x).fill(null).map(randomBrick)));
+        .map((_, z) =>
+            new Array(chunkSize)
+                .fill(null)
+                .map((__, y) => new Array(chunkSize).fill(null).map((___, x) => randomBrick(x, y, z, chunkHeight)))
+        );
     return optimise(chunk);
 };

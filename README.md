@@ -20,11 +20,16 @@ I'm taking it one step at a time. So for now:
 
 ### immediate improvements
 
--   chunks should be aware of other chunks to determine which brick gets rendered
--   generate a terrain (couple of rules to generate chunks)
+-   chunk cache after generation
+-   optimise to take other chunks into account using the cache
+-   generateChunk should have more rules to pepper ores and other blocks
+-   check if there is an advantage for a brick to not display a cube but only the visible faces
+-   should we have an algorithm that merge bricks? Instead of a 4x4 grass blocks, a 1x1 grass face with a 4 scale? Seems tricky but now it's on the todo list ;)
 
 ### long term milestones
 
 -   camera controlled by keyboard
+-   terrain generation across chunks
 -   physics
+-   mining?
 -   crafting?

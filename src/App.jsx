@@ -6,7 +6,13 @@ import GrassBrick from "./bricks/grass/Brick";
 import CameraControls from "./CameraControls";
 
 const App = () => (
-    <ErrorBoundary>
+    <ErrorBoundary
+        renderError={(error) => (
+            <pre>
+                <span dangerouslySetInnerHTML={{ __html: JSON.stringify(error, null, 2) }} />
+            </pre>
+        )}
+    >
         <Suspense fallback={<p>Loading...</p>}>
             <Canvas style={{ height: "500px" }}>
                 <CameraControls />

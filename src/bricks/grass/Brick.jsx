@@ -5,7 +5,11 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import topImg from "./top.png";
 import bottomImg from "./bottom.png";
 import sideImg from "./side.png";
-import { rotateTexture } from "../../utils";
+import { CubeTextures } from "../../utils";
+
+/**
+ * Texture order right, left, top, bottom, front, back
+ */
 
 const GrassBrick = (props) => {
     const ref = useRef();
@@ -18,12 +22,14 @@ const GrassBrick = (props) => {
         <mesh {...props} ref={ref} scale={1}>
             <boxGeometry args={[4, 4, 4]} />
 
-            <meshBasicMaterial attachArray="material" map={topTexture} />
-            <meshBasicMaterial attachArray="material" map={bottomTexture} />
-            <meshBasicMaterial attachArray="material" map={rotateTexture(sideTexture, -90)} />
-            <meshBasicMaterial attachArray="material" map={rotateTexture(sideTexture, -90)} />
-            <meshBasicMaterial attachArray="material" map={rotateTexture(sideTexture, -90)} />
-            <meshBasicMaterial attachArray="material" map={rotateTexture(sideTexture, 90)} />
+            <CubeTextures
+                top={topTexture}
+                bottom={bottomTexture}
+                front={sideTexture}
+                back={sideTexture}
+                left={sideTexture}
+                right={sideTexture}
+            />
         </mesh>
     );
 };

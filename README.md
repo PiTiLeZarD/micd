@@ -6,7 +6,7 @@ So here is just a playground with minecraft in mind just so I toy around with th
 
 Demo is available here:
 
-https://github.com/PiTiLeZarD/micd
+http://PiTiLeZarD.github.io/micd
 
 If you want to run it as a desktop app:
 

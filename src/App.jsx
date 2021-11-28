@@ -1,16 +1,15 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { NoToneMapping } from "three";
 
 import ErrorBoundary from "./ErrorBoundary";
 import CameraControls from "./CameraControls";
 
-import { Brick, bricks } from "./bricks";
 import { TexturesContextProvider } from "./textures";
+import Chunk from "./game/Chunk";
+import { generateChunk } from "./utils";
 
 const App = () => {
-    const [brick, setBrick] = useState(Object.keys(bricks)[0]);
-
     return (
         <ErrorBoundary
             renderError={(error) => (
@@ -20,17 +19,7 @@ const App = () => {
             )}
         >
             <Suspense fallback={<p>Loading...</p>}>
-                <label>
-                    Type of brick:{" "}
-                    <select onChange={(ev) => setBrick(ev.target.value)}>
-                        {Object.keys(bricks).map((brickName, k) => (
-                            <option key={k} value={brickName}>
-                                {brickName}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-
+                <p>This is a 16x16x32 chunk, aired up a little, no optimisation done...</p>
                 <Canvas
                     style={{ height: "500px" }}
                     onCreated={({ gl }) => {
@@ -41,7 +30,7 @@ const App = () => {
                     <ambientLight />
                     <pointLight position={[20, 20, 20]} />
                     <TexturesContextProvider>
-                        <Brick position={[0, 0, 0]} config={bricks[brick]} />
+                        <Chunk position={[0, 0, 0]} data={generateChunk(16, 16, 32)} />
                     </TexturesContextProvider>
                 </Canvas>
             </Suspense>

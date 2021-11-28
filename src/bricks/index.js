@@ -17,4 +17,7 @@ export const bricks = {
     cobblestone: {
         texture: "cobblestone",
     },
+    coal_ore: {
+        texture: "coal_ore",
+    },
 };

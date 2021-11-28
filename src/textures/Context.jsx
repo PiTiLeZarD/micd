@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import textures from "./all";
+import textures from "./imgs";
 
 export const TexturesContext = React.createContext({});
 

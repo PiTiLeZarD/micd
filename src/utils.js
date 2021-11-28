@@ -16,30 +16,25 @@ const randomBrick = (x, y, z, chunkHeight) => {
     return Object.keys(bricks).indexOf("stone");
 };
 
-const surroundingBricks = (chunk, x, y, z) => {
-    if (x == 0 || y == 0 || z == 0 || z == chunk.length - 1 || y == chunk[0].length - 1 || x == chunk[0][0].length - 1)
-        return [null];
+const surroundedInChunk = (chunk, x, y, z) =>
+    chunk[z - 1][y][x] != null &&
+    chunk[z][y - 1][x] != null &&
+    chunk[z][y][x - 1] != null &&
+    chunk[z + 1][y][x] != null &&
+    chunk[z][y + 1][x] != null &&
+    chunk[z][y][x + 1] != null;
 
-    return [
-        chunk[z - 1][y][x],
-        chunk[z][y - 1][x],
-        chunk[z][y][x - 1],
-        chunk[z + 1][y][x],
-        chunk[z][y + 1][x],
-        chunk[z][y][x + 1],
-    ];
-};
-
-const optimise = (chunk) =>
-    chunk.map((floor, z) =>
-        floor.map((row, y) =>
-            row.map((brick, x) => {
-                if (brick == null) return null;
-                if (!surroundingBricks(chunk, x, y, z).includes(null)) return null;
+const optimiseChunk = (chunk, chunkSize, chunkHeight) =>
+    chunk.map((floor, z) => {
+        if (z == 0 || z == chunkHeight - 1) return floor;
+        return floor.map((row, y) => {
+            if (y == 0 || y == chunkSize - 1) return row;
+            return row.map((brick, x) => {
+                if (brick == null || x == 0 || x == chunkSize - 1 || surroundedInChunk(chunk, x, y, z)) return null;
                 return brick;
-            })
-        )
-    );
+            });
+        });
+    });
 
 export const generateChunk = (cx, cy, chunkSize, chunkHeight) => {
     const chunk = new Array(chunkHeight)
@@ -49,5 +44,5 @@ export const generateChunk = (cx, cy, chunkSize, chunkHeight) => {
                 .fill(null)
                 .map((__, y) => new Array(chunkSize).fill(null).map((___, x) => randomBrick(x, y, z, chunkHeight)))
         );
-    return optimise(chunk);
+    return optimiseChunk(chunk, chunkSize, chunkHeight);
 };

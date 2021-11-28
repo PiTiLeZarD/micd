@@ -1,11 +1,22 @@
 {
     "name": "micd",
+    "author": "Jonathan Adami <pitilezard@gmail.com> (jadami.com)",
+    "homepage": "http://PiTiLeZarD.github.io/micd",
     "scripts": {
+        "clean": "rm -Rf .parcel-cache dist",
         "dev": "parcel src/index.html",
-        "tauri": "tauri"
+        "build:demo": "parcel build --public-url /micd src/index.html",
+        "tauri": "tauri",
+        "predeploy": "yarn clean && yarn build:demo",
+        "deploy": "gh-pages -b ghpages -d dist"
+    },
+    "repository": {
+        "url": "https://github.com/PiTiLeZarD/micd.git",
+        "type": "git"
     },
     "devDependencies": {
         "@tauri-apps/cli": "^1.0.0-beta.10",
+        "gh-pages": "^3.2.3",
         "parcel": "^2.0.1"
     },
     "dependencies": {

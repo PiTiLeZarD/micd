@@ -5,12 +5,11 @@ import { NoToneMapping } from "three";
 import ErrorBoundary from "./ErrorBoundary";
 import CameraControls from "./CameraControls";
 
-import GrassBrick from "./bricks/grass/Brick";
-import DirtBrick from "./bricks/dirt/Brick";
-import CobbleStoneBrick from "./bricks/cobblestone/Brick";
+import { Brick, bricks } from "./bricks";
+import { TexturesContextProvider } from "./textures";
 
 const App = () => {
-    const [brick, setBrick] = useState("grass");
+    const [brick, setBrick] = useState(Object.keys(bricks)[0]);
 
     return (
         <ErrorBoundary
@@ -24,9 +23,11 @@ const App = () => {
                 <label>
                     Type of brick:{" "}
                     <select onChange={(ev) => setBrick(ev.target.value)}>
-                        <option value="grass">Grass</option>
-                        <option value="dirt">Dirt</option>
-                        <option value="cobblestone">CobbleStone</option>
+                        {Object.keys(bricks).map((brickName, k) => (
+                            <option key={k} value={brickName}>
+                                {brickName}
+                            </option>
+                        ))}
                     </select>
                 </label>
 
@@ -39,9 +40,9 @@ const App = () => {
                     <CameraControls />
                     <ambientLight />
                     <pointLight position={[20, 20, 20]} />
-                    {brick == "grass" && <GrassBrick position={[0, 0, 0]} />}
-                    {brick == "dirt" && <DirtBrick position={[0, 0, 0]} />}
-                    {brick == "cobblestone" && <CobbleStoneBrick position={[0, 0, 0]} />}
+                    <TexturesContextProvider>
+                        <Brick position={[0, 0, 0]} config={bricks[brick]} />
+                    </TexturesContextProvider>
                 </Canvas>
             </Suspense>
         </ErrorBoundary>

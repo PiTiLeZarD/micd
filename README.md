@@ -20,7 +20,6 @@ I'm taking it one step at a time. So for now:
 
 ### immediate improvements
 
--   Better brick system, more generic. Load all textures and pick and choose base off of a config file of some sort
 -   textures really don't need to be that big, 8 bits png would do the trick and probably would lighten everything up
 
 ### long term milestones

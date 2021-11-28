@@ -11,7 +11,7 @@ import { CubeTextures } from "../../utils";
  * Texture order right, left, top, bottom, front, back
  */
 
-const GrassBrick = (props) => {
+const Brick = (props) => {
     const ref = useRef();
 
     const topTexture = useLoader(TextureLoader, topImg);
@@ -34,4 +34,4 @@ const GrassBrick = (props) => {
     );
 };
 
-export default GrassBrick;
+export default Brick;

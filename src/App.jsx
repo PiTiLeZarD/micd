@@ -6,6 +6,7 @@ import CameraControls from "./CameraControls";
 
 import GrassBrick from "./bricks/grass/Brick";
 import DirtBrick from "./bricks/dirt/Brick";
+import CobbleStoneBrick from "./bricks/cobblestone/Brick";
 
 const App = () => {
     const [brick, setBrick] = useState("grass");
@@ -24,6 +25,7 @@ const App = () => {
                     <select onChange={(ev) => setBrick(ev.target.value)}>
                         <option value="grass">Grass</option>
                         <option value="dirt">Dirt</option>
+                        <option value="cobblestone">CobbleStone</option>
                     </select>
                 </label>
 
@@ -33,6 +35,7 @@ const App = () => {
                     <pointLight position={[20, 20, 20]} />
                     {brick == "grass" && <GrassBrick position={[0, 0, 0]} />}
                     {brick == "dirt" && <DirtBrick position={[0, 0, 0]} />}
+                    {brick == "cobblestone" && <CobbleStoneBrick position={[0, 0, 0]} />}
                 </Canvas>
             </Suspense>
         </ErrorBoundary>

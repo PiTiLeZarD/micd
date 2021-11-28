@@ -1,5 +1,5 @@
 import { Fragment, useContext } from "react";
-import { TexturesContext } from "./Context";
+import { TexturesContext } from "./TextureContext";
 
 export const CubeTextures = ({ right, left, top, bottom, front, back }) => {
     const textures = useContext(TexturesContext);

@@ -6,9 +6,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import CameraControls from "./CameraControls";
 
 import { TexturesContextProvider } from "./textures";
-import Chunk from "./game/Chunk";
-import { generateChunk } from "./utils";
-import { GameContextProvider } from "./game/Context";
+import { Chunk, GameContextProvider } from "./game";
 
 const App = () => {
     return (

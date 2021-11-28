@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Brick, bricks } from "../bricks";
-import { GameContext } from "./Context";
+import { GameContext } from "./GameContext";
 
 const Chunk = ({ position: [x, y] }) => {
     const { getChunk, chunkSize } = useContext(GameContext);

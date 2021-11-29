@@ -30,8 +30,9 @@ const optimiseChunk = (chunk, chunkSize, chunkHeight) =>
         return floor.map((row, y) => {
             if (y == 0 || y == chunkSize - 1) return row;
             return row.map((brick, x) => {
-                if (brick == null || x == 0 || x == chunkSize - 1 || surroundedInChunk(chunk, x, y, z)) return null;
-                return brick;
+                if (brick == null) return null;
+                if (x == 0 || x == chunkSize - 1) return brick;
+                return surroundedInChunk(chunk, x, y, z) ? null : brick;
             });
         });
     });

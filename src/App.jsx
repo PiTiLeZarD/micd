@@ -29,10 +29,10 @@ const App = () => {
                     <pointLight position={[20, 20, 20]} />
                     <GameContextProvider>
                         <TexturesContextProvider>
-                            {new Array(4)
+                            {new Array(2)
                                 .fill(null)
                                 .map((_, x) =>
-                                    new Array(4)
+                                    new Array(2)
                                         .fill(null)
                                         .map((__, y) => <Chunk key={`${x}.${y}`} position={[0, 0]} />)
                                 )}
